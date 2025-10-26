@@ -12,11 +12,18 @@ socket.on('message' , (msg, rinfo) => {
     console.log(`Received message: ${msg} from ${rinfo.address}:${rinfo.port}`);
 });
 
+function pollReceivers() {
+    receivers.forEach(receiver => {
+        console.log(`Polling receiver ${receiver.name} at IP ${receiver.ip}`);
+        receiver.getBatteryState();
+    });
+}
+
+pollReceivers();
+
 socket.bind(53212);
 //open udp listener to port 53212
 
 
-receivers.forEach(element => {
-    element.getBatteryState();
-});
+
 
