@@ -6,7 +6,7 @@ export class Receiver {
         this.ip = IP;
         this.name = name;
         this.battery = '?';
-        this.invalidator = null;
+        this.invalidator = null; 
         this.batteryChanged = new EventEmitter();
     }
 
@@ -14,6 +14,7 @@ export class Receiver {
         this.battery = '?';
         clearInterval(this.invalidator);
         this.invalidator = null;
+        this.batteryChanged.emit(this.battery);
     }
     setBattery(value) {
         this.battery = value;

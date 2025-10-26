@@ -6,7 +6,6 @@ export class BSS {
         this.receivers = receivers;
         this.mapping = config.mapping;
 
-        //subscribing
         this.mapping.forEach(element => {
             let receiver = this.receivers.find(r => r.name === element.name);
             if (receiver) {
