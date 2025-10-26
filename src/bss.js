@@ -10,7 +10,7 @@ export class BSS {
             let receiver = this.receivers.find(r => r.name === element.name);
             if (receiver) {
                 receiver.batteryChanged.on((value) => {
-                    this.sendBatteryToBSS(element.commands.find(cmd => cmd.value === value));
+                    this.sendBatteryToBSS(element.commands[value] || '');
                 });
             }
         });
