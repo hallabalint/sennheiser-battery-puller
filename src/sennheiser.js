@@ -26,9 +26,10 @@ export class Receiver {
         const server = dgram.createSocket('udp4');
         server.send('Push 0 100 0\r', 53212, this.ip, (err) => {
             console.log(err);
+            server.close();
             
         });
-        server.close();
+        
 
     }
 }
