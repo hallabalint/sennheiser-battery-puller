@@ -7,10 +7,10 @@ export class BSS {
         this.mapping = config.mapping;
 
         this.mapping.forEach(element => {
-            let receiver = this.receivers.find(r => r.name === element.name);
+            let receiver = receivers.find(r => r.name === element.name);
             if (receiver) {
-                receiver.batteryChanged.on((value) => {
-                    this.sendBatteryToBSS(element.commands[value] || '');
+                receiver.batteryChanged.on('change', () => {
+                    this.sendBatteryToBSS(element.commands[receiver.battery] || '');
                 });
             }
         });
