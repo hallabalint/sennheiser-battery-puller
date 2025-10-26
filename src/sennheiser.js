@@ -10,12 +10,11 @@ export class Receiver {
         //send udp to port 53212 command to get battery state Push 0 100 0<CR>
         
         const server = dgram.createSocket('udp4');
-        server.send('Push 0 100 0', 53212, this.ip, (err) => {
+        server.send('Push 0 100 0\r', 53212, this.ip, (err) => {
            
         });
-         server.on('message', (msg, rinfo) => {
-                console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-            });
+        server.close();
+         
     }
 
 }
