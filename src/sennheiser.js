@@ -1,4 +1,5 @@
 import dgram from 'dgram';
+import { EventEmitter } from 'stream';
 
 export class Receiver {
     constructor(IP, name) {
@@ -6,14 +7,19 @@ export class Receiver {
         this.name = name;
         this.battery = '?';
         this.invalidator = null;
+        this.batteryChanged = new EventEmitter();
     }
 
     resetBattery() {
         this.battery = '?';
+        clearInterval(this.invalidator);
+        this.invalidator = null;
     }
     setBattery(value) {
         this.battery = value;
+        clearInterval(this.invalidator);
         this.invalidator = setInterval(this.resetBattery, 60000);
+        this.batteryChanged.emit(this.battery);
     }
     getBatteryState() {
         const server = dgram.createSocket('udp4');

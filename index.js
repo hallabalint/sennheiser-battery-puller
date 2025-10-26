@@ -6,6 +6,8 @@ console.log("Loaded config:", config);
 const receivers = config.default.receivers.map(r => new Receiver(r.ip, r.name));
 console.log(receivers);
 
+const bss = new BSS(config.default.bss,receivers);
+
 const socket = dgram.createSocket('udp4');
 
 socket.on('message' , (msg, rinfo) => {
