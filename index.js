@@ -17,12 +17,11 @@ socket.on('message' , (msg, rinfo) => {
             //find rinfo.ip in receivers.ip then add battery data to it
             let receiver = receivers.find(r => r.ip === rinfo.address);
             if (receiver) {
-                receiver.battery = row[1];
+                receiver.setBattery(row[1]);
                 console.log(`Receiver ${receiver.name} at IP ${receiver.ip} has battery state: ${row[1]}`);
             
         }
     }})
-    console.log(receivers);
 });
 
 function pollReceivers() {
@@ -35,6 +34,3 @@ function pollReceivers() {
 setInterval(pollReceivers,5000)
 
 socket.bind(53212)
-
-
-

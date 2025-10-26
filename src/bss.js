@@ -16,15 +16,18 @@ export class BSS {
         });
     }
 
-    sendBatteryToBSS(command) {
-       //send command to BSS TCP 1023 thend disconnect
-
+     sendBatteryToBSS(command) {
         const client = new net.Socket();
         client.connect(1023, this.ip, function() {
             console.log('Connected to BSS');
-            client.write(command + '\r');
+            const hex = (command || '')
+            const payload = Buffer.from(hex, 'hex');
+            const buf = Buffer.concat([payload, Buffer.from([0x0D])]); 
+            client.write(buf, (err) => {
+                if (err) console.error('BSS write error:', err);
+                client.end();
+            });
         });
-        client.destroy();
 
     }
 }
