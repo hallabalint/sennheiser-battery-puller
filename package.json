@@ -1,0 +1,26 @@
+{
+  "name": "sennheiser-battery-puller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hallabalint/sennheiser-battery-puller.git"
+  },
+  "keywords": [
+    "sennheiser",
+    "ew",
+    "g4",
+    "battery"
+  ],
+  "author": "Balint HALLA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hallabalint/sennheiser-battery-puller/issues"
+  },
+  "homepage": "https://github.com/hallabalint/sennheiser-battery-puller#readme"
+}
