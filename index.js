@@ -32,9 +32,7 @@ function pollReceivers() {
 
 setInterval(pollReceivers,5000)
 
-socket.bind(53212);
-//open udp listener to port 53212
-
+socket.bind(53212)
 
 
 
