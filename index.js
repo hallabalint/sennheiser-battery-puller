@@ -10,7 +10,7 @@ const socket = dgram.createSocket('udp4');
 
 socket.on('message' , (msg, rinfo) => {
     let data = msg.toString().split('\r').forEach(e => {
-        let row = e.slice(' ');
+        let row = e.split(' ');
         if (row[0] == 'Bat') {
             //find rinfo.ip in receivers.ip then add battery data to it
             let receiver = receivers.find(r => r.ip === rinfo.address);
