@@ -6,13 +6,13 @@ console.log("Loaded config:", config);
 const receivers = config.default.receivers.map(r => new Receiver(r.ip, r.name));
 console.log(receivers);
 
-const scoket = dgram.createSocket('udp4');
+const socket = dgram.createSocket('udp4');
 
-Socket.on('message' , (msg, rinfo) => {
+socket.on('message' , (msg, rinfo) => {
     console.log(`Received message: ${msg} from ${rinfo.address}:${rinfo.port}`);
 });
 
-scoket.bind(53212);
+socket.bind(53212);
 //open udp listener to port 53212
 
 
